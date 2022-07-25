@@ -11,6 +11,6 @@ if [ $# -ne 0 ]
    then echo "Usage: $0"
 fi
 
-crontab_line="*/20 * * * * osascript -e 'display dialog \"Look at something 20 feet away for 20 seconds\" with title \"AOA-TTT: Rest your eyes 👀\" buttons {\"OK\"} default button {\"OK\"}'"
+crontab_line="*/20 * * * * osascript -e 'display notification \"Look at something 20 feet away for 20 seconds\" with title \"AOA-TTT: Rest your eyes 👀\"'"
 
 (crontab -l 2&>/dev/null; echo "$crontab_line") | crontab -
