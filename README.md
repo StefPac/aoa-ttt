@@ -4,6 +4,10 @@ This is a small MacOS utility that will display a dialog every twenty minutes to
 
 Your eyes are important, take good care!
 
+## Requirements
+
+This utility can only run on MacOS. It was tested on MacOS Monterey.
+
 ## Installation
 
 ```sh
