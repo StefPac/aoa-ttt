@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Uninstall the AOA Twenty Twenty Twenty alert for MacOS.
+#
+# Usage: `./aoa-ttt-uninstall`
+
+# NOTE: this might have unintended consequences if `AOA-TTT` is a
+# string used for cron jobs in different contexts.
+
+(crontab -l 2&>/dev/null; grep -v AOA-TTT) | crontab -
