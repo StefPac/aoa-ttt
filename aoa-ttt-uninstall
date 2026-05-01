@@ -4,7 +4,17 @@
 #
 # Usage: `./aoa-ttt-uninstall`
 
-# NOTE: this might have unintended consequences if `AOA-TTT` is a
-# string used for cron jobs in different contexts.
+set -u
 
-(crontab -l 2&>/dev/null | grep -v AOA-TTT) | crontab -
+LABEL="com.aoa-ttt"
+PLIST="$HOME/Library/LaunchAgents/$LABEL.plist"
+
+if [ -f "$PLIST" ]; then
+    launchctl unload "$PLIST" 2>/dev/null || true
+    rm "$PLIST"
+fi
+
+# Also remove any legacy crontab entry from the previous cron-based version.
+if crontab -l 2>/dev/null | grep -q AOA-TTT; then
+    (crontab -l 2>/dev/null | grep -v AOA-TTT) | crontab -
+fi

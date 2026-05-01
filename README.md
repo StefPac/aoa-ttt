@@ -9,12 +9,13 @@ Your eyes are important, take good care!
 
 ## Requirements
 
-This utility can only run on MacOS. It was tested on MacOS Monterey.
+This utility can only run on MacOS. It was tested on MacOS Monterey and
+later.
 
 ## Installation
 
 ```sh
-git clone XXX
+git clone https://github.com/StefPac/aoa-ttt.git
 cd aoa-ttt
 ./aoa-ttt-install
 ```
@@ -24,4 +25,8 @@ To uninstall:
 ```sh
 ./aoa-ttt-uninstall
 ```
-or manually remove the crontab entry with `crontab -e`.
+
+The installer registers a `launchd` agent at
+`~/Library/LaunchAgents/com.aoa-ttt.plist` that fires every 20 minutes. To
+remove it manually, run `launchctl unload ~/Library/LaunchAgents/com.aoa-ttt.plist`
+and delete the file.
