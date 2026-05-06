@@ -13,8 +13,3 @@ if [ -f "$PLIST" ]; then
     launchctl unload "$PLIST" 2>/dev/null || true
     rm "$PLIST"
 fi
-
-# Also remove any legacy crontab entry from the previous cron-based version.
-if crontab -l 2>/dev/null | grep -q AOA-TTT; then
-    (crontab -l 2>/dev/null | grep -v AOA-TTT) | crontab -
-fi

@@ -42,8 +42,3 @@ EOF
 # Reload so changes to the plist are picked up if it was already loaded.
 launchctl unload "$PLIST" 2>/dev/null || true
 launchctl load -w "$PLIST"
-
-# Clean up any stale crontab entry from the previous cron-based version.
-if crontab -l 2>/dev/null | grep -q AOA-TTT; then
-    (crontab -l 2>/dev/null | grep -v AOA-TTT) | crontab -
-fi
